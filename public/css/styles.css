@@ -55,3 +55,8 @@ button {
     color: white;
     padding: 8px;
 }
+
+.weather-icon {
+    width: 100px;
+    
+}

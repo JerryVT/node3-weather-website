@@ -14,6 +14,9 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2') //# is used when we have to access a id
+const messageThree = document.querySelector('#message-3')
+
+const weatherImage = document.createElement('img')
 
 weatherForm.addEventListener('submit', (e) => {     //e is short of event
 
@@ -32,7 +35,12 @@ weatherForm.addEventListener('submit', (e) => {     //e is short of event
        } else {
         
         messageOne.textContent = data.location
-        messageTwo.textContent = data.forecast
+        messageTwo.textContent = data.forecast.desc
+        messageThree.textContent = data.forecast.windSpeed
+
+        weatherImage.src = data.forecast.picUrl
+        document.querySelector('.weather_icon').appendChild(weatherImage)
+
        }
     })
 })

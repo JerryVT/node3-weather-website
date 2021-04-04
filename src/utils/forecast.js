@@ -22,7 +22,7 @@ const forecast = (longitude, latitude, forecast_callback) => {
         } else if (body.error) {   // if an error comes because of issue in url, it will come as a response from server. hence a diff if condt
               forecast_callback('Unable to find location', undefined)
         } else {
-              forecast_callback( undefined,
+              forecast_callback( undefined,{
                 //{                                                               //passing object
                   //temperature: response.body.current.temperature,
                   //humidity: response.body.current.humidity
@@ -31,8 +31,10 @@ const forecast = (longitude, latitude, forecast_callback) => {
                  // humidity: body.current.humidity
 
                   //}
-                  "It is currently " + body.current.temperature + " degrees outside and have a humuidity of " + body.current.humidity
-                )
+                  desc : "It is currently " + body.current.temperature + " degrees outside and have a humuidity of " + body.current.humidity,
+                  picUrl : body.current.weather_icons,
+                  windSpeed: "Currently the windspeed is " + body.current.wind_speed + ' km/h towards ' + body.current.wind_dir + ' direction'
+              })
         }
             //    console.log("It is currently" + response.body.current.temperature + " degrees out and have a humuidity of " + response.body.current.humidity)
             //    }
