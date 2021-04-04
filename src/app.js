@@ -4,6 +4,8 @@ const express = require('express')          //for loading the libraries
 
 const hbs = require('hbs')
 
+const port = process.env.PORT || 3000        //to accesss port from heroku
+
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
@@ -124,7 +126,9 @@ app.get('*', (req, res) => {       // * can be used to match all other routes th
     })
 })
 
-app.listen(3000, ()=> {                          //starts server and listen to port 3000
-    console.log('Server is up on port 3000')
-})           
+app.listen(port, ()=> {                          //starts server and listen to port 3000 (local) or the one of heroku
+    console.log('Server is up on port '+ port)
+})
+
+app.listen()
 
